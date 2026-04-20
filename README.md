@@ -8,7 +8,7 @@ Kali Linux:  Majority ethical hacking ppl will use this Flavor
 Corporate: RedHat , CentOS ,  Ubuntu , Fedora , IBM AIX , HP_Unix , Cisco Unix ,OEL.
 ```
 
-What do we use in lab is CentOS 7 
+What do we use in lab is RHEL9
 
 ## Linux Command Standard Syntax:
 
