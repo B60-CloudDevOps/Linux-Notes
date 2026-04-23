@@ -1,32 +1,32 @@
 # Linux-HandNotes
 
-### Linux Commands and Options 
+## Linux Commands and Options
 
-There are 300+ flavors of Linux :
+There are 300+ flavors of Linux:
 ```
-Kali Linux:  Majority ethical hacking ppl will use this Flavor
-Corporate: RedHat , CentOS ,  Ubuntu , Fedora , IBM AIX , HP_Unix , Cisco Unix ,OEL.
+Kali Linux: Majority ethical hacking ppl will use this Flavor
+Corporate: RedHat, CentOS, Ubuntu, Fedora, IBM AIX, HP_Unix, Cisco Unix, OEL.
 ```
 
-What do we use in lab is RHEL9
+What we use in lab is RHEL9
 
-## Linux Command Standard Syntax:
+## Linux Command Standard Syntax
 
-Command-name {options} {inputs} 
+Command-name {options} {inputs}
+
 ```
 Options:
-    - <Single-Character>
-    -- <Single-Word>
+  - <Single-Character>
+  -- <Single-Word>
 
-Standard Option to all the commands is --help
-    Ex: uname --help 
+Standard Option to all commands is --help
+  Ex: uname --help
 ```
 
-
-```Command line Syntaxes.```
+## Command Line Syntaxes
 
 ```
-$ command -options  
+$ command -options
 ```
 
 ## Commands
@@ -35,1064 +35,1235 @@ In terminal, the first argument we give to execute is a command.
 
 For example:
 
-``` 
-uname 
 ```
-uname is a command and that is the first word of a command line syntax.
+uname
+```
 
+uname is a command and that is the first word of a command line syntax.
 
 ## Options
 
-Certain commands are going to have options, Options in Linux Command line will be a second argument over the command line, Usually those options will be seen in three formats..
+Certain commands are going to have options. Options in Linux Command line are typically a second argument. Usually those options are seen in three formats:
+
 ```
-    <command>    -<single character> (Ex: -h , -v )
-    <command>    --<single word> (Ex: --help , --version)
-    <command>    -<single word> (Ex: -version, -help) 
-
- ```
-
-For Ex :
-``` 
-uname -a   
-uname --all 
+<command> -<single character> (Ex: -h , -v )
+<command> --<single word> (Ex: --help , --version)
+<command> -<single word> (Ex: -version, -help)
 ```
 
-# Inputs
+For example:
 
-Certain commands require inputs, Inputs are given with options in some commands and without options for some commands.
+```
+uname -a
+uname --all
+```
 
-For Example:
- ``` 
+## Inputs
+
+Certain commands require inputs. Inputs are given with options in some commands and without options for some commands.
+
+For example:
+
+```
 ls stands for list
-    $ ls /boot
-    $ ls -d /boot
+  $ ls /boot
+  $ ls -d /boot
 ```
 
-In above example, ls is a command -d is an option and /boot is an input. 
-Given the command with and without option changes the behavior of the command execution.
+In the above example, ls is a command, -d is an option, and /boot is an input. The command behavior changes based on whether you use an option or not.
 
+## Hardware and Operating System Information
 
-### Hardware and Operating system Information
+In general, when we purchase new hardware like laptops or desktops, we look into the configuration of the machine. Let us do the same for the server. This is minimum knowledge required when working on any machine, whether desktop or server.
 
-In general, when we purchase a new hardware like Laptops or Desktops we generally look into the configuration of the machine. So let us try to do the same for the server as well and this is minimum knowledge required while you are working on any machine either that is Desktop or Server.
+When you login to the server, run the following commands to see system details. In Linux, everything is a file. You can learn the properties by reading the respective files.
 
-So we need to login to the server to run the following commands to see the system details.
-In Linux, everything is a file. So, it's all about reading respective files to know the properties
-
-
-### To check the vendor of the operating system.
+### Check the Vendor of the Operating System
 
 ```
 $ cat /etc/*release
 ```
 
-### To check the CPU information
+### Check the CPU Information
 
 ```
 $ cat /proc/cpuinfo
 ```
 
-### To check the memory information 
+### Check the Memory Information
+
 ```
 $ cat /proc/meminfo
 ```
 
-###  To check the disk information
-```
-$ fdisk -l   or    lsblk
-``` 
+### Check the Disk Information
 
-### To check the architecture whether it is 32bit or 64bit
+```
+$ fdisk -l
+$ lsblk
+```
+
+### Check the Architecture (32bit or 64bit)
 
 ```
 $ uname -i
 
-32 bit ->  i386/i586/i686 
-64 bit ->  x86_64
+32 bit  -> i386/i586/i686
+64 bit  -> x86_64
 
-PS Note: Starting CentOS 7, We don't have operating systems coming in 32 bit any more. Hence, we always see 64 bit.
-With this information in hand you will have an idea of what you are dealing with and the specifications of that Linux machine. 
-
+Note: Starting CentOS 7, operating systems only come in 64 bit. Hence, we always see x86_64.
+With this information in hand you will have an idea of the Linux machine you're dealing with and its specifications.
 ```
 
 
 
 ## Listing Files and Directories
 
-# List Files
+### List Files
 
-In windows OS, you generally see the list of files when you open a particular folder, But Linux is mostly command line and hence you may not see the files by default. Hence, you need to execute a command to check the list of files.
+In Windows OS, you generally see the list of files when you open a folder. But Linux is mostly command line, so you may not see files by default. You need to execute a command to check the list of files.
 
-ls is a Linux shell command that lists directory contents of files and directories. Some practical examples of ls command are shown below.
+`ls` is a Linux shell command that lists directory contents of files and directories. Some practical examples of ls command are shown below.
 
 ```
 Syntax: ls <Options> <Path>
 ```
 
-Note that ls command works without an input i.e both the options and path are optional. It works with or without them.
+Note that the ls command works without input (both options and path are optional). It works with or without them.
+
 ```
 $ ls -ld /opt
 ```
 
-Get list of files and directories but it may not show hidden files.
+Get a list of files and directories (may not show hidden files):
+
 ```
 $ ls
 ```
 
-Get list of hidden files and directories.
+Get a list of hidden files and directories:
+
 ```
 $ ls -A
 ```
 
-Get list of files with long format, usually shows properties of a file
+Get a list of files with long format (shows properties of a file):
+
 ```
 $ ls -l
 ```
 
-We can combine multiple options as well.
+Combine multiple options:
+
 ```
 $ ls -Al
 ```
-## NOTE: 
+
+## Note
+
 Giving multiple options depends on the command. ls accepts multiple options but it isn't applicable for all.
 
+### Creating Files
 
-### Creating files
+We can create files in multiple ways using different commands in Linux. We will use the `touch` command to create files.
 
-We can create files in multiple ways/commands in Linux. We will use `touch` command to create the file.
 ```
 Syntax: $ touch <filename>
 ```
-touch command by default creates an empty file.
+
+The touch command by default creates an empty file.
 
 ```
 $ touch file.txt
 ```
 
-To check the file created.
+To check the file created:
+
 ```
 $ ls -l
 ```
-In the above ls command output you can see the file is an empty size file by referring the fifth colum.
 
-touch command can create multiple files at a single go as shown.
+In the above ls command output, you can see the file is an empty file by referring to the fifth column.
 
-touch sample notes.txt lambda.py
+The touch command can create multiple files at a single go:
 
-To check the file created.
+```
+$ touch sample notes.txt lambda.py
+```
+
+To check the files created:
+
 ```
 $ ls -l
 ```
-### Important Takeaways:
 
-In Linux OS, there is no file-extensions. Extensions are given only for user understanding.
-Also, linux commands and files are case sensitive.
+### Important Takeaways
+
+In Linux OS, there are no file extensions. Extensions are given only for user understanding. Also, Linux commands and files are case-sensitive.
 
 ```
-training.txt and Training.txt are 2 different files as per the linux ( as it's case sensitive )
+training.txt and Training.txt are 2 different files (Linux is case-sensitive)
 ```
-
 
 ### Removing Files
 
+In Linux, we use the `rm` command to remove files. We can also use the `unlink` command which does the same thing, but rm is more widely preferred.
 
-In Linux to remove files we have `rm` command, We can also use unlink command which does the same thing yet rm is widely preferred and used command.
+```
+Syntax: rm <filename>
+```
 
-        Syntax: rm <filename>
+Example:
+
 ```
 $ rm fileName.txt
 ```
 
-Now again when you list the files using ls command the sample file should be gone as you have removed it.
+Now when you list the files using the ls command, the file should be gone.
+
 ```
 $ ls
 $ rm -i fileName.txt
 ```
 
-It may ask you for a prompt (yes/no) [Not all the times] to remove the files. You can suppress the prompt by adding -f option in the command.
+This may ask you for a prompt (yes/no) to remove the file. You can suppress the prompt by adding the -f option:
+
 ```
 $ rm -f fileName.txt
 $ ls
 ```
 
-Note: Be careful while removing a file as it deletes all the contents of the file and retrieving the lost data is not possible in most of the cases.
-Thing you can explore.
+**Note:** Be careful while removing a file as it deletes all contents and retrieving lost data is not possible in most cases.
 
-How to remove multiple files ?
+Things you can explore:
+- How to remove multiple files?
+
 ```
 $ rm file1 file2
 ```
 
-###  Copying Files
+### Copying Files
 
-In Linux to copy a file we have cp command. Alternatively we have rsync but mostly we prefer to use cp command in general.
+In Linux, we use the `cp` command to copy files. Alternatively, we have rsync, but cp is more commonly used.
+
+```
+Syntax: cp <source-file> <destination-file>
 ```
 
-    Syntax: cp <source-file> <destination-file>
+Example:
 
-            $ cp notes.txt pages.txt
+```
+$ cp notes.txt pages.txt
 ```
 
-You can check whether the file has been copied or not by referring ls command output.
+You can check if the file has been copied by using the ls command:
 
-            $ `ls`
+```
+$ ls
+```
 
-NOTE: If destination exists it will overwrite the file and in some cases it will ask you for a prompt (yes/no) to overwrite the file or not.
+**Note:** If the destination exists, it will overwrite the file. In some cases, it will ask for a prompt (yes/no) to confirm the overwrite.
 
 
 ## Rename Files
 
 ### Renaming/Moving a File
 
-In Linux, in order to change the name of a file we use mv command.
+In Linux, to change the name of a file we use the `mv` command.
 
-        Syntax: mv <source-file> <destination-file>
-
-                $ mv notes.txt note.txt
-
-You can check whether the file has been renamed or not by referring ls command output.
-
-                $ ls
-
-NOTE: Unlike Windows, Linux filesystem are Case-Sensitive ones, Meaning the file note.txt & NOTE.txt can be referred as two different files. But windows FAT & NTFS filesystem are Case-Insensitive, Meaning the file note.txt & NOTE.txt are same files and you cannot create multiple files with same name.
-
-                $ mv note.txt NOTE.txt
-
-You can check whether the file has been renamed or not by referring ls command output.
-
-                $ ls
-
-## NOTE: 
-    If destination exists then it will overwrite the file and in some cases it will ask you for a prompt (yes/no) to overwrite the file or not.
-    mv command intention is to move the file from one location to another yet we use mainly to rename the files as well.
-
-
-# Creating Directories
-
-### Linux Directory Structure :
-
-Unlike any operating system Linux also has its own directory structure and here in linux it starts with /
 ```
-Ref: https://qph.cf2.quoracdn.net/main-qimg-849caf34b204bb41bcb94b20335cab6f
+Syntax: mv <source-file> <destination-file>
 ```
 
-### Directories:
+Example:
 
-* / -> Root Directory
 ```
+$ mv notes.txt note.txt
+```
+
+You can check if the file has been renamed by using the ls command:
+
+```
+$ ls
+```
+
+**Note:** Unlike Windows, Linux filesystems are case-sensitive. This means that note.txt and NOTE.txt are two different files. Windows FAT and NTFS filesystems are case-insensitive, so note.txt and NOTE.txt would be the same file.
+
+Example:
+
+```
+$ mv note.txt NOTE.txt
+$ ls
+```
+
+**Note:**
+- If the destination exists, it will overwrite the file. In some cases, it will ask for a prompt (yes/no) to confirm the overwrite.
+- The mv command is intended to move files from one location to another, but we also use it to rename files.
+
+## Creating Directories
+
+### Linux Directory Structure
+
+Unlike any other operating system, Linux also has its own directory structure that starts with `/`.
+
+Reference: [Linux Directory Structure](https://qph.cf2.quoracdn.net/main-qimg-849caf34b204bb41bcb94b20335cab6f)
+
+### Directories
+
+- `/` - Root Directory
+
 Types of files:
-    d - Directory   
-    - - Regular file 
-    l - Link
-    b - block devices
-    c - character files 
-    S - socket files 
-    p - Named pipe file 
-```
-### pwd: present working directory
-```
-To check in which directory you are in 
-    $ pwd
-```
-
-### general Directory Switch Commands
 
 ```
-Change from one directory to another
-    $ cd <directory>
-
-    $ cd -> This will take you to home directory 
-    $ cd - -> This will take you to previous dir 
-    $ cd .. -> Takes you to parent directory 
+d - Directory
+- - Regular file
+l - Link
+b - Block devices
+c - Character files
+S - Socket files
+p - Named pipe file
 ```
 
-### Directory sandbox 
+### pwd: Present Working Directory
+
+To check which directory you are currently in:
+
 ```
- -> Create Directory 
- 
-    $ mkdir demo 
-
- -> Remove a directory 
-    rm / rmdir (Empty Dir)
-    $ rm -r dirname
-
-*  Copy a directory 
-    $ cp -r dir1 dir2
-
-* *Renaming / Moving a directory
-    $ mv source destination
-
-    * If destination does not exists: Rename the directory
-    * If destination exists:
-         -> Destination is a file:
-                Invalid operation
-         -> Destination is a Directory:
-                File/Directory will move inside that directory
+$ pwd
 ```
 
+### General Directory Switch Commands
+
+```
+Change from one directory to another:
+  $ cd <directory>
+
+  $ cd         # Takes you to home directory
+  $ cd -       # Takes you to previous directory
+  $ cd ..      # Takes you to parent directory
+```
+
+### Directory Sandbox
+
+Create a directory:
+
+```
+$ mkdir demo
+```
+
+Remove a directory:
+
+```
+$ rm -r dirname      # Recursive delete
+$ rmdir dirname      # Empty directory only
+```
+
+Copy a directory:
+
+```
+$ cp -r dir1 dir2
+```
+
+Renaming/Moving a directory:
+
+```
+$ mv source destination
+
+- If destination does not exist: Rename the directory
+- If destination exists:
+  - Destination is a file: Invalid operation
+  - Destination is a directory: File/Directory will move inside that directory
+```
 
 ### Basic Connection
 
-In windows, we use ```\``` (backslash) to give the path of a file or a directory but in Unix & Linux we use ```/``` (forward slash).
+In Windows, we use `\` (backslash) to give the path of a file or directory, but in Unix & Linux we use `/` (forward slash).
 
-In Linux, we have a ```ROOT DIRECTORY``` where the path of any directory ends here. A simple forward slash ```(/)``` is called as a ROOT DIRECTORY.
+In Linux, we have a **ROOT DIRECTORY** where the path of any directory ends. A simple forward slash `(/)` is called the **ROOT DIRECTORY**.
 
-Additionally, to the list of directories provided in the above diagram we have more and each and every default directory are under```/``` have some purpose in the operating system.
-Unlike Windows, Linux is Command line based OS, So if you want to move from one directory to another directory we would be using commands to get it done.
+There are many directories under `/`, and each has some purpose in the operating system. Unlike Windows, Linux is command-line based, so we use commands to move from one directory to another.
 
+## Navigate Directories
 
+### Present Working Directory
 
-# Navigate Directories
+To check your current location in the system:
 
-## Present Working Directory
+```
+$ pwd
+```
 
-To check where you are currently in the system we use pwd command.
+### Navigate to Directories
 
-    $ pwd
+To change the working directory from one location to another, we use the `cd` command.
 
+```
+Syntax: cd <directory>
+```
 
-##Navigate to Directories
+Example:
 
-To change the working directory from one location to another we use cdcommand
+```
+$ cd /bin
+```
 
-    Syntax: cd <directory>
-    $ cd /bin
+You will switch to the /bin directory.
 
-you will switch to /bin directory
+```
+$ pwd
+```
 
-    $ pwd
+You can check your current working directory using the pwd command.
 
-you can check your current working directory using pwd command
+```
+$ cd
+```
 
-    $ cd
+Simple `cd` command will take you to the home directory of the user.
 
-simple cd command will take you to the home directory of the user
+```
+$ pwd
+```
 
-    $ pwd
+Observe the output.
 
-observe the output
+```
+$ cd -
+```
 
-    $ cd - This command will take you the previous directory that you were using.
+This command will take you to the previous directory that you were using.
 
-Double dot (..)
+### Double Dot (..)
+
 ```
 $ cd /etc/yum
-
 $ cd ..
-
 $ pwd
-
 $ cd ..
-
 $ pwd
-
-.. means parent directory and it takes you to the parent directory of the current directory
-
-### Single dot (.)
 ```
 
-Dot in linux indicates present working directory, you can use it in the commands which we have used so far
+`..` means parent directory and takes you to the parent directory of the current directory.
+
+### Single Dot (.)
+
+Dot in Linux indicates the present working directory. You can use it in the commands we have used so far.
 
 ```
-$ ls observe the names of the files
-
-We will try cp command with the . option
-
-$ cp /etc/passwd .
-
 $ ls
 
+# We will try cp command with the . option
+$ cp /etc/passwd .
+$ ls
 ```
 
-Now if you compare the output from the previous ls you will be able to see the file with name sample in the present directory.
+Now if you compare the output from the previous ls, you will be able to see the file with name passwd in the present directory.
 
 ### User Management
-```
-Create a user account named userName
-  
-  $ sudo useradd userName  
-  $ cat /etc/group   
-
-Create a group account names groupName
-  
-  $ sudo groupadd groupname
-
-Adding User to the Group
-  
-  $ sudo usermod -a -G groupName userName  
-
-Changing the user password
-  
-  $ sudo passwd userName   
-
-Deleting the user  `userName` from the group `groupName`
-  
-  $ sudo gpasswd -d userName groupName
-
-```   
-
-## Common Filtering Pattenrs with awk and cut
-
-``` 
-awk and cut are very powerful file filtering tools on linux
-```
-* cat is to read the file from top to bottom 
-* tac is to read the file from bottom to top 
-* tail is to read the lines from bottom to top based the number of mentioned lines ( By default, it prints the last 10 lines of a file )
-* head is to read the lines from top to bottom based the number of mentioned lines ( By default, it prints the top 10 lines of a file )
-
-### Here are common examples of head, tail cat , tac, sed and cut
 
 ```
-# cat /etc/passwd               //To read a file
-# cat -n /etc/passwd            //reads and will place a serial number at the starting of every line
-# tac /etc/passwd               //To read the file from bottom to top
+# Create a user account named userName
+$ sudo useradd userName
+$ cat /etc/group
 
+# Create a group account named groupName
+$ sudo groupadd groupname
 
-# head passwd                   //reads the top 10 times
-# head -n 5 passwd              //Reads the first 5 lines
+# Add User to the Group
+$ sudo usermod -a -G groupName userName
 
-# tail passwd                  //Reads the last 10 lines
-# tail -5 passwd               //Reads the last 5 lines
+# Change the user password
+$ sudo passwd userName
+
+# Delete the user 'userName' from the group 'groupName'
+$ sudo gpasswd -d userName groupName
 ```
 
-### To print the lines from specific line to line like print the lines in between 10 to 15
-```
-# sed -n -e '10,14 p' passwd         //Prints the lines from 10 to 14
-# sed -n -e '1 p' -e '10 p' passwd   //prints 1st and 10th line in the passwd file 
-# sed -n -e '9 p' /etc/passwd        //To print a specific line
-
-# cat /etc/passwd | grep login       //To find the word login
-```
-
-###To see the first field in every line of the file which has a common delimiter
-```
-# cut -d : -f1 /etc/passwd        //Will display the first field in each and every line
-If you want first and 4th field
-
-# cut -d : f1,4 /etc/passwd
-# cut -d : -f1-4  /etc/passwd     //Prints the fields from 1 to 4
+## Common Filtering Patterns with awk and cut
 
 ```
-![image](https://github.com/b54-clouddevops/Linux-Notes/assets/57979895/a3474b34-730f-4212-983a-36710a0208c1)
-
-
-# Create Directories
-
-
-Creating Directory is same as creating a Folder in your windows machine. You can create a directory using mkdir command.
-
-    $ mkdir demo
-
-This will create a new directory with the name demo. you can check using ls command.
-
-    $ ls
-
-Now you can see demo directory listed.
-But to determine demo is a directory, better always use ls -l command output. Directories start with d character of ls -l output.
-
-    $ mkdir -p demo/new/item1
-
--p option is used to create the directory recursively even if the parent directory is missing
-
-    $ mkdir demo1 demo2 demo3 demo4
-
-You can also create multiple directories.
-
-    $ ls
-
-
-### Ownerships 
-
-`chown` is the command to change the ownership of the files and directions.
-
-    Syntax: chown userName:groupName  fileName.txt 
-```
-    # chmod centos:devops  fileName.txt   [ Changes the owner & group of the file to centos & devops ]
-    # chmod -r centos:devops dirName/     [ Changes the owner & group of the directroy to centos & devops ]
-    # chmod -rf centos:devops dirName/    [ Recursively changes the owner & group of the directroy to centos & devops along with the files in the directory ]
+awk and cut are very powerful file filtering tools on Linux
 ```
 
+- `cat` - Read the file from top to bottom
+- `tac` - Read the file from bottom to top
+- `tail` - Read the lines from bottom to top based on the number of mentioned lines (by default, prints the last 10 lines)
+- `head` - Read the lines from top to bottom based on the number of mentioned lines (by default, prints the top 10 lines)
 
-### Permissions  
+### Common Examples of head, tail, cat, tac, sed and cut
 
-In linux, permissions are classifed to Read [ `r` and the value of it is 4 ] ,Write [ `w` and the value of it is 2 ] ,execute [ `x` and the value of it is 1 ] ,
-
-    Syntax: chmod 761 fileName   [first 7 is user , second 6 is group and third 1 is others permission]
 ```
-  U:  4+2+1 = 7     [ Owner can read, write and execute the file ]
-  G:  4+2   = 6     [ Owner can read, write the file ]
-  O:  1     = 1     [ Other can just run the file ]
-```
+# cat /etc/passwd                 # Read a file
+# cat -n /etc/passwd              # Read and place serial number at start of every line
+# tac /etc/passwd                 # Read the file from bottom to top
 
+# head passwd                      # Read top 10 lines
+# head -n 5 passwd                # Read first 5 lines
 
-### Additional things to learn.
-
-
-    There are total seven type of files in Linux. Explore each of them. Directory and regular file is two of them.
-    Types: Directory, Regular File, Block Special File, Character Special File, Named pipe file, Link file, Socket file.
-
-# Create Directories
-
-Copying directories can be done with the same command cp that is used to copy the files but while copying the directories we need mention -r option.
-
-    Syntax: cp -r dir1 dir2
-
-It copies all the contents of dir1 into dir2.
-
-Note: If dir2 already exists dir1 will be copied inside dir2
-
-    $ cp -r demo1 demo2
-
-Copy always changes the behavior based on Target Directory.
-
-    $ cp SOURCE TARGET
-```
--> if TARGET exists and if it is a file then it is invalid operation.
--> if TARGET exists and if it is a dir then it copies the file inside the directory.
--> if TARGET doesnt exist then it will copy the directory
+# tail passwd                     # Read last 10 lines
+# tail -5 passwd                  # Read last 5 lines
 ```
 
+### Print Lines from Specific Range
 
-# Moving / Renaming Directories
+To print lines in between 10 to 15:
 
-# Moving Directories
+```
+# sed -n -e '10,14 p' passwd          # Print lines 10 to 14
+# sed -n -e '1 p' -e '10 p' passwd    # Print 1st and 10th line
+# sed -n -e '9 p' /etc/passwd         # Print specific line
 
-Moving directories or renaming directories can be done using mv command.
+# cat /etc/passwd | grep login        # Find the word "login"
+```
 
-    Syntax: mv source destination
+### Display First Field in Each Line
 
-    If destination doesn't exist it renames the directory
-    If destination exists the source will be moved into the directory
+To see the first field in every line of the file with a common delimiter:
 
-    $ mv demo4 DEMO4
+```
+# cut -d : -f1 /etc/passwd           # Display first field
 
-This will rename the demo4 as renaming
-    $ ls
+# If you want first and 4th field:
+# cut -d : -f1,4 /etc/passwd
 
+# Print fields from 1 to 4:
+# cut -d : -f1-4 /etc/passwd
+```
+
+![Linux Directory Structure](https://github.com/b54-clouddevops/Linux-Notes/assets/57979895/a3474b34-730f-4212-983a-36710a0208c1)
+
+## Create Directories
+
+Creating a directory is the same as creating a folder in Windows. You can create a directory using the `mkdir` command.
+
+```
+$ mkdir demo
+```
+
+This will create a new directory named demo. You can check using the ls command:
+
+```
+$ ls
+```
+
+Now you can see the demo directory listed. To determine if demo is a directory, always use the `ls -l` command output. Directories start with the `d` character.
+
+```
+$ mkdir -p demo/new/item1
+```
+
+The `-p` option is used to create the directory recursively even if the parent directory is missing.
+
+Create multiple directories:
+
+```
+$ mkdir demo1 demo2 demo3 demo4
+$ ls
+```
+
+### Ownerships
+
+`chown` is the command to change the ownership of files and directories.
+
+```
+Syntax: chown userName:groupName fileName.txt
+```
+
+Examples:
+
+```
+# chown centos:devops fileName.txt           # Change owner & group of file
+# chown -r centos:devops dirName/            # Change owner & group of directory
+# chown -rf centos:devops dirName/           # Recursively change owner & group
+```
+
+### Permissions
+
+In Linux, permissions are classified as:
+- Read (`r`) - value 4
+- Write (`w`) - value 2
+- Execute (`x`) - value 1
+
+```
+Syntax: chmod 761 fileName
+```
+
+Where:
+- 7 = User (Owner)
+- 6 = Group
+- 1 = Others
+
+```
+U: 4+2+1 = 7  # Owner can read, write, and execute
+G: 4+2   = 6  # Group can read and write
+O: 1     = 1  # Others can just execute
+```
+
+### Additional Things to Learn
+
+- There are seven types of files in Linux. Explore each of them.
+- Directory and regular file are two of them.
+- Types: Directory, Regular File, Block Special File, Character Special File, Named Pipe File, Link File, Socket File.
+
+## Copy Directories
+
+Copying directories uses the same `cp` command that is used to copy files. However, when copying directories, we need to add the `-r` option.
+
+```
+Syntax: cp -r dir1 dir2
+```
+
+This copies all contents of dir1 into dir2.
+
+**Note:** If dir2 already exists, dir1 will be copied inside dir2.
+
+```
+$ cp -r demo1 demo2
+```
+
+Copy behavior depends on Target Directory:
+
+```
+$ cp SOURCE TARGET
+
+- If TARGET exists and is a file: Invalid operation
+- If TARGET exists and is a directory: Copy the file inside the directory
+- If TARGET doesn't exist: Copy the directory
+```
+
+## Moving/Renaming Directories
+
+### Moving Directories
+
+Moving or renaming directories can be done using the `mv` command.
+
+```
+Syntax: mv source destination
+```
+
+- If destination doesn't exist: Renames the directory
+- If destination exists: Moves the source into the directory
+
+```
+$ mv demo4 DEMO4
+```
+
+This will rename demo4 to DEMO4.
+
+```
+$ ls
+```
 
 ## Removing Directories
 
-To remove a directory we use rmdir command in linux. Removing directories also deletes all the files that the directory holds inside it.
+To remove a directory, we use the `rmdir` command in Linux. Removing directories also deletes all files that the directory contains.
 
-     Syntax: rmdir <directory>
+```
+Syntax: rmdir <directory>
+```
 
-    $ mkdir demo1
-    $ ls
-    $ rmdir demo1
-    $ ls
+Example:
 
-### Check the output to see if the directory is deleted or not.
+```
+$ mkdir demo1
+$ ls
+$ rmdir demo1
+$ ls
+```
 
-It deletes the directory with the name demo1 but in the following example you will see an error saying the directory is not empty. That is because we have already created sub-directories named new and test inside demo.
+Check the output to see if the directory was deleted.
 
-    $ mkdir -p demo1/{new,test} 
-    $ rmdir demo1
+In the following example, you will see an error saying the directory is not empty. This is because we have already created sub-directories inside demo.
 
-To delete them recursively we use -r option.
+```
+$ mkdir -p demo1/{new,test}
+$ rmdir demo1
+```
 
-    $ rm -r demo1 
-    $ ls
+To delete them recursively, we use the `-r` option:
 
-Some times you might be propted for (yes/no) to delete the files and if we want to make it forceful delete without prompting then we use -f option.
+```
+$ rm -r demo1
+$ ls
+```
 
-Note: Once the files are removed there is no way of retrieving it back them.
+Sometimes you might be prompted (yes/no) to delete files. If we want a forceful delete without prompting, we use the `-f` option:
+
+```
+$ rm -rf demo1
+```
+
+**Note:** Once files are removed, there is no way of retrieving them back.
 
 
-# Concatenate Files
+## Concatenate Files
 
 ### Concatenate File Content
 
-cat(concatenate) command is very frequently used in Linux. It reads data from the file and gives their content as output. It helps us to create, view, concatenate files. So let us see some frequently used cat commands.
+The `cat` (concatenate) command is very frequently used in Linux. It reads data from files and gives their content as output. It helps us to create, view, and concatenate files.
 
-    Syntax: cat <filename>
+```
+Syntax: cat <filename>
+```
 
-    cat /etc/passwd
+Example:
 
-It shows the content of the file
+```
+$ cat /etc/passwd
+```
 
-    cat -n /etc/passwd
+Show the content of the file.
 
-It shows the content of the file along with the line numbers
+```
+$ cat -n /etc/passwd
+```
 
-    tac /etc/passwd
+Show content with line numbers.
 
-It displays the content of the file in reverse order. 
-Additional things to Learn.
+```
+$ tac /etc/passwd
+```
 
-    -A option in cat command.
+Display the content of the file in reverse order.
 
+Additional things to learn:
+- `-A` option in cat command
 
-### Filter Commands
+## Filter Commands
 
-In many situations you might want to have only a certain number of lines from a file. You can use filter commands or a combination of them to get your work done.
+In many situations, you might want only a certain number of lines from a file. You can use filter commands or a combination of them to get your work done.
 
-Usually the filters are based on
+Filters are typically based on:
+- Line Numbers
+- Row Filters
+- Column Filters
 
-    Line Numbers
-    Row Filters
-    Column Filters
+### Head Command
 
-#### Head Command
+To filter output based on line numbers from the start of the file, use the `head` command.
 
-To filter the output based on line numbers and that to be from starting of the file then we use head command.
+```
+Syntax: head <filename>
+```
 
-    Syntax: head <filename>
+By default, head command gives you the top 10 lines, but you can change it:
 
-By default head command gives you top 10 lines of the file but you can change it according to your needs.
+```
+$ head /etc/passwd
+$ head -n 5 /etc/passwd
+```
 
-    head /etc/passwd
-    head -n 5 /etc/passwd
+The second command gives the first 5 lines.
 
-It gives the first 5 lines of the file
+### Tail Command
 
-#### Tail Command
+While head gives you the top lines, `tail` command prints the last lines.
 
-head command gives you the top lines of the file however if you want to print the last lines you can use tail command
+```
+Syntax: tail <filename>
+```
 
-    Syntax: tail <filename>
+Tail command will print the last 10 lines by default, but you can change it using the `-n` option:
 
-tail command will print last 10 lines and however you can change them using -n option.
+```
+$ tail /etc/passwd
+$ tail -n 5 /etc/passwd
+```
 
-    tail /etc/passwd
+The second command gives the last 5 lines.
 
-    tail -n 5 /etc/passwd
+### Grep Command
 
-It gives the last 5 lines of the file
+The `grep` filter searches a file for a particular pattern of characters and displays all lines that contain that pattern. The pattern searched is referred to as a regular expression (grep stands for "globally search for regular expression and print out").
 
-#### Grep command
+```
+Syntax: grep <word> <filename>
+```
 
-The grep filter searches a file for a particular pattern of characters, and displays all lines that contain that pattern. The pattern that is searched in the file is referred to as the regular expression (grep stands for globally search for regular expression and print out).
+Example:
 
-    Syntax: grep <word> <filename>
-    grep root /etc/passwd
+```
+$ grep root /etc/passwd
+```
 
-It fetches all the lines which have the word root in them.
+This fetches all lines which contain the word "root".
 
 ### Awk Command
 
-In some cases the content needs to be filtered based on the columns in that case we use awk command.
-
-    Syntax: awk -F 'delimiter' '{print $column-number}' <filename>
-
-    awk -F : '{print $1}' /etc/passwd
-
-It will print the first column of the file
-
-    awk -F : '{print $1,$2}' /etc/passwd
-
-It will print the first and second column of the file
-Additional things to learn.
-
-### cut command 
-
-Cut is a command which helps us in extracting the sections of the lines based on the delimiters.
-
-   $ cut -d : f1 /etc/passwd [assuming the delimiter as `:` prints the 4th field in each and every line of the file]
-   $ cut -d : f1-4 /etc/passwd [assuming the delimiter as `:` prints the fields from 1-4 in each and every line of the file]
-
-
-### Process Management 
-
-Most useful commands to see the list of running process and their utliisations are :
-    $ ps 
-    $ top 
-
-    Examples on their usage
- 
-```
-    $ ps -ef                 [ Shows every process on the system using standard syntax]
-    $ ps -aux                [ Shows every process on the system using BSD syntax ]
-    $ top                    [ Top shows you dynamic result and refresh the result for 3 seconds ]
-    $ ps -U root -u root u   [ every process running as root (real & effective ID) ]
-    
-```
-
-### kill   
-
-Kill is a command which has the capability to kill any process and the parent process of your choice. Also kill has lot of signals to kill :
+When content needs to be filtered based on columns, we use the `awk` command.
 
 ```
-    Syntax: 
-        $ kill pID 
-        $ kill -9 pID  [ To delete a process forcefully ]
+Syntax: awk -F 'delimiter' '{print $column-number}' <filename>
 ```
 
+Examples:
 
-### Regular Expressions.
+```
+$ awk -F : '{print $1}' /etc/passwd
+```
 
-    https://www.grymoire.com/Unix/Regular.html#uh-6
+This prints the first column.
 
-#### SED & AWK
+```
+$ awk -F : '{print $1,$2}' /etc/passwd
+```
 
-    https://github.com/chiranjibKonwar/Documentation/blob/master/Sed%20%26%20awk%20101Hacks%20%20.pdf
+This prints the first and second columns.
 
+Additional things to learn:
+- More advanced awk usage patterns
 
-# VI Editor
+### Cut Command
 
-### Linux Editors.
+`cut` helps extract sections of lines based on delimiters.
 
-There are so many editors which are part of different Linux Operating Systems. Editors like vi, vim, nano, gedit, emacs and more are mostly known editors. Among these 90% of the operating systems comes with vi editor as default editor.
+```
+Syntax: cut -d <delimiter> -f <field-number> <filename>
+```
 
-```vi   ```is very powerful editor and it comes with much enhanced options in vim. Hence, we choose to go with vim in our sessions.
-### VIM Editor.
+Examples:
 
-vim editor has three modes and each and every mode has its own purpose and allows you to perform certain actions.
+```
+$ cut -d : -f1 /etc/passwd       # Print 1st field
+$ cut -d : -f1,4 /etc/passwd     # Print 1st and 4th fields
+$ cut -d : -f1-4 /etc/passwd     # Print fields 1-4
+```
 
-    ESC Mode
-    COLON Mode
-    INSERT Mode
+## Process Management
 
-VI MODES
+The most useful commands to see running processes and their utilization are:
 
-Following are the operations done by each and every mode.
+```
+$ ps
+$ top
+```
 
-`ESC Mode` is used to perform the following operations.
+### Examples
 
-    Line Operations.
+```
+$ ps -ef                   # Show every process using standard syntax
+$ ps -aux                  # Show every process using BSD syntax
+$ top                      # Dynamic view, refreshes every 3 seconds
+$ ps -U root -u root u     # Every process running as root (real & effective ID)
+```
 
-    -> Copy Lines
+### Kill Command
 
-    Ex: Copy a Single Line
+The `kill` command can terminate any process and its parent process. It has many signals available:
 
-     1. Ensure you are in ESC Mode, by pressing ESC.
-     2. Take the cursor to that line.
-     3. Press yy to copy the line
+```
+Syntax:
+  $ kill pID
+  $ kill -9 pID      # Forcefully delete a process
+```
 
-  -> Paste Lines
+## Regular Expressions
 
-  Ex: Paste a Single Line.
+Resource: [Regular Expressions](https://www.grymoire.com/Unix/Regular.html#uh-6)
 
-      1. Take the cursor to the line where you want to paste then press p after performing copy using yy.
+### SED & AWK
 
+Resource: [SED & AWK 101 Hacks](https://github.com/chiranjibKonwar/Documentation/blob/master/Sed%20%26%20awk%20101Hacks%20%20.pdf)
 
-  -> Delete/Cut Lines
+## VI Editor
 
-  Ex: Cut / Delete a Single line
+### Linux Editors
 
-      1. Ensure you are in ESC Mode, by pressing ESC.
-      2. Take the cursor to that line.
-      3. Press dd to cut/delete the line
+There are many editors in different Linux Operating Systems: vi, vim, nano, gedit, emacs, and more. About 90% of operating systems come with vi editor as default.
 
-    Word Operations
+`vi` is a very powerful editor with many enhanced options in vim. Therefore, we choose to work with vim in our sessions.
 
-    -> Copy Words
+### VIM Editor
 
-    yw
+Vim editor has three modes, each with its own purpose:
 
-    -> Paste Words
+1. **ESC Mode** - Perform operations on existing content
+2. **COLON Mode** - File and search operations
+3. **INSERT Mode** - Add new content
 
-    p
+### ESC Mode Operations
 
-    -> Delete Words.
+#### Line Operations
 
-    dw
+**Copy Lines:**
 
-    n , Number can combined with any option of above. For ex to copy 10 lines 10yy, and if we want to delete 5 lines then 5dd
+```
+1. Ensure you are in ESC Mode by pressing ESC
+2. Take the cursor to that line
+3. Press yy to copy the line
+```
 
-    Undo Operations.
+**Paste Lines:**
 
-    u is available to undo the operations like (CTRL + Z ) in windows.
+```
+1. Take the cursor to the line where you want to paste
+2. Press p after performing copy using yy
+```
 
-COLON Mode
+**Delete/Cut Lines:**
 
-COLON is used to perform the following options.
+```
+1. Ensure you are in ESC Mode by pressing ESC
+2. Take the cursor to that line
+3. Press dd to cut/delete the line
+```
 
-   #### Search Operation.
+#### Word Operations
 
-    Ex: Search a word.
-        Ensure you are in ESC mode and press : to go to COLON Mode.
-        :/WORD , GIve WORD which you want to search.
+- Copy words: `yw`
+- Paste words: `p`
+- Delete words: `dw`
 
-  ####  Search & Replace
+**Note:** Numbers can be combined with any option. For example:
+- `10yy` - copy 10 lines
+- `5dd` - delete 5 lines
+- `u` - undo operations (like Ctrl+Z in Windows)
 
-    Ex: Search a Word and Replace
-        Ensure you are in ESC mode and press : to go to COLON Mode.
-        :%s/WORD1/WORD2/ -> This will replace WORD1 with WORD2
-        Flags : g, i :%s/WORD1/WORD2/g -> global means all possibilities on the line will be changed. :%s/WORD1/WORD2/i -> case-sensitive replace.
+### COLON Mode Operations
 
-  ####  File Operations
-        Save File :w
-        Quit Editor :q :q! -> Quit with out saving
-        Save and Quit :wq
+#### Search Operation
+
+```
+1. Ensure you are in ESC mode
+2. Press : to go to COLON Mode
+3. Type :/WORD to search for that word
+```
+
+#### Search & Replace
+
+```
+1. Ensure you are in ESC mode
+2. Press : to go to COLON Mode
+3. :%s/WORD1/WORD2/              # Replace first occurrence on each line
+4. :%s/WORD1/WORD2/g             # Replace all occurrences (global)
+5. :%s/WORD1/WORD2/i             # Case-insensitive replace
+```
+
+#### File Operations
+
+- Save file: `:w`
+- Quit editor: `:q`
+- Quit without saving: `:q!`
+- Save and quit: `:wq`
 
 ### INSERT Mode
 
-    INSERT mode is used to add your own content, whereas above two modes are dealing with existing content on the file.
+INSERT mode is used to add your own content, whereas the above two modes deal with existing content in the file.
 
-    NOTE: There are lot many operations are available, But we are talking which is needed for DevOps prospective.
+**Note:** There are many more operations available, but we focus on what is needed from a DevOps perspective.
 
-# Find Files
+## Find Files
 
-### FInding Files
+### Finding Files
 
-Most of the times when you login you have no idea where the files are located at. Since Linux doesn't have an UI it would be a tedious job to traverse through all the directories to find a single file but linux provides find command to search for a file with the name.
+When you login, you often have no idea where files are located. Since Linux doesn't have a UI, traversing all directories manually would be tedious. The `find` command helps search for files.
 
-    Syntax: find <location-to-find> <search-criteria>
+```
+Syntax: find <location-to-find> <search-criteria>
+```
 
-    find / -name passwd
+Example:
 
-This command searches through all the directories as we have given the location as /. You will find many files, but you can narrow down the search nby providing /etc directory.
+```
+$ find / -name passwd
+```
 
-    find /etc -name passwd
+This searches through all directories (starting from `/`). You can narrow down the search by providing a specific directory:
 
-This command only searches /etc directory for the passwd file. You can observe that the results are less in number.
-Additional things to learn.
+```
+$ find /etc -name passwd
+```
 
-    https://alvinalexander.com/unix/edu/examples/find.shtml
+This only searches in the /etc directory, resulting in fewer results.
 
+Additional resources: [find examples](https://alvinalexander.com/unix/edu/examples/find.shtml)
 
-# Internet Utilities
+## Internet Utilities
 
-### Command line browser
+### Command Line Browser
 
-Most of the times you need to browse urls to and fetch that content to command line. Some times we need partial information of the URL or the full information. curl command is available to browse the content over command line.
+Often you need to browse URLs and fetch content from the command line. The `curl` command is available to browse content online.
 
-    Syntax: curl <url>
+```
+Syntax: curl <url>
+```
 
-    curl www.google.com
+Example:
 
-Using curl command we can download the files.
+```
+$ curl www.google.com
+```
 
-    curl https://archive.apache.org/dist/tomcat/tomcat-8/v8.0.0-RC1/bin/apache-tomcat-8.0.0-RC1-deployer.tar.gz -o apache-tomcat-8.0.0-RC1-deployer.tar.gz
+Using curl, we can download files:
 
-Above command will download the file to the given filename. But with out giving the filename also we can download it to the default file name.
+```
+$ curl https://archive.apache.org/dist/tomcat/tomcat-8/v8.0.0-RC1/bin/apache-tomcat-8.0.0-RC1-deployer.tar.gz -o apache-tomcat-8.0.0-RC1-deployer.tar.gz
+```
 
-    curl -O https://archive.apache.org/dist/tomcat/tomcat-8/v8.0.0-RC1/bin/apache-tomcat-8.0.0-RC1-deployer.tar.gz
+This downloads the file with the specified filename. Without specifying a filename, it uses the default:
 
-# Download Files
+```
+$ curl -O https://archive.apache.org/dist/tomcat/tomcat-8/v8.0.0-RC1/bin/apache-tomcat-8.0.0-RC1-deployer.tar.gz
+```
 
-Most of the times we need to download softwares or tools from internet to work on them. We can use wget command to download the files from internet.
+## Download Files
 
-    Syntax: wget <url>
+Often you need to download software or tools from the internet. The `wget` command downloads files from the internet.
 
-In this example I will be downloading tomcat from the internet.
+```
+Syntax: wget <url>
+```
 
-    wget https://archive.apache.org/dist/tomcat/tomcat-8/v8.0.0-RC1/bin/apache-tomcat-8.0.0-RC1-deployer.tar.gz
+Example (downloading Tomcat):
 
-    ls
+```
+$ wget https://archive.apache.org/dist/tomcat/tomcat-8/v8.0.0-RC1/bin/apache-tomcat-8.0.0-RC1-deployer.tar.gz
+$ ls
+```
 
-NOTE: wget command will not come by default with OS. We need to exclusively install that, So better use curl command all the time.
-Extracting the files from tar
+**Note:** wget doesn't come by default with the OS. You need to install it explicitly. It's better to use curl all the time.
 
-Many times in Linux world all the softwares are packaged either in .zip or .tar format. To extract the files from .tar extension we can use tar command.
+### Extracting Files from tar
 
-    Syntax: tar -xf <filename>.tar.gz
+Many software packages in the Linux world are packaged in `.zip` or `.tar` format. To extract files from `.tar` extension, use the `tar` command.
 
-    tar -xf apache-tomcat-8.0.0-RC1-deployer.tar.gz
+```
+Syntax: tar -xf <filename>.tar.gz
+```
 
-To extract archives we use -x option and -f means file.
+Example:
 
+```
+$ tar -xf apache-tomcat-8.0.0-RC1-deployer.tar.gz
+```
 
-# Pipes
+Where:
+- `-x` = extract option
+- `-f` = file option
+
+## Pipes
 
 ### Pipes
 
-Pipes are used to send the output of one command to another command without storing the content anywhere physically on disk.
-
-    Syntax :  com1 | com2
-
-    Ex: cat /etc/passwd | grep root
-
-Note: All the commands will not accept inputs over pipes. In case if we need to take the input then we take the help of xargs command.
-
-    touch sample.txt
-
-    ls
-
-    echo sample.txt | rm -f
-
-    ls
-
-Now you can use the xargs command.
-
-    echo sample.txt | xargs rm -f
-    ls
-
-
-
-### sudo 
-
-`sudo` is a command in linux to give the temporary privileged access to the user
-
-Below commands shows how to switch between the users
+Pipes send the output of one command to another command without storing content on disk.
 
 ```
-$ sudo su -   [will be switched to the root user]
-# whoami      [shows you the output as root]
-
+Syntax: com1 | com2
 ```
 
-### How can we enroll the users to gain sudo permission ?
-
-By default, in centos apart from root and the centos user, none of the users will be having root access.
-Here is the file where we can add / enroll the users to gain sudo access
+Example:
 
 ```
-$ cat /etc/sudoers   [ You can see the list of users with sudo access in the system ] 
-
+$ cat /etc/passwd | grep root
 ```
 
-### Package Management  
+**Note:** Not all commands accept inputs via pipes. If we need to take the input, we use the `xargs` command.
 
-In centos linux, packages can be installed in any of the below ways :
+Example:
 
-    1) dnf  [dnf is the package manager in Centos Linux : YUM handles all the pre-req and co-req packages of the actual package]
-    2) dnf  [RPM Package Manager : Download the package and install it manually. We are responsible for pre-req and co-req packages of the actual package]
-    3) Source Code Based Installation [ Ref: https://www.makeuseof.com/compile-install-software-from-source-linux/ ]
+```
+$ touch sample.txt
+$ ls
+$ echo sample.txt | rm -f
+$ ls
+```
 
-Examples of `yum` usage :
+Now use xargs:
 
-    # dnf install packageName -y             [ Installs package ]
-    # dnf remove packageName                 [ Deletes package ]
-    # dnf update packageName                 [ Updates package ]
-    # dnf list installed                     [ Shows the list of installed packages ]
-    # dnf list available                     [ Shows the list of available packages for the system that are not installed ]
-    # sudo dnf list all                      [ Shows all the packages that are installed on the system and are available for the system ]
-    # dnf update wget -y                     [ updates a specific package ]
-    # dnf update -y                          [ Updates all the installed packages on the server ]
-    # dnf update --security                  [ Updates only the security packages on the system ]
-    # dnf update releasever=9 --security     [ Update security packages related only to a specific release ]
-    # dnf update releasever=9 --security --exclude=java* [ Updates all the security updates, but not java ] 
-    # rpm -qa |grep packageName              [ Checks if updates are available for a specific or a group of packages ]
-    # dnf update `cat package.txt            [ Update the list of packages from a specific file ( package.txt with packageNames like splunk java jenkins ) ]
-    # dnf info history                       [ check whether the above mentioned packages are installed or not ]
-    # dnf history                            [ Lists all the dnf commands exectued on the system ]
+```
+$ echo sample.txt | xargs rm -f
+$ ls
+```
 
-Examples of `rpm` usage : 
+## sudo Command
 
-    # rpm -i packageName.rpm        [ Installs package ]
-    # rpm -U packageName.rpm        [ Upgrades package ]
-    # rpm -e packageName.rpm        [ Deletes package ]
-    # rpm -q packageName.rpm        [ Queries package ] 
+The `sudo` command in Linux gives temporary privileged access to users.
 
+Below commands show how to switch between users:
 
-> How dnf knew that it has to download from which url or location in the internet ?
+```
+$ sudo su -      # Switch to root user
+# whoami         # Shows output as root
+```
 
-dnf will refer the repos available under /etc/yum.repos.d/*.repo files and reach out to only those destinations to download the files
+### How to Give Users sudo Permission
 
+By default in CentOS, apart from root and the centos user, none of the users have root access. The sudoers file determines who has sudo access:
+
+```
+$ cat /etc/sudoers   # See the list of users with sudo access
+```
+
+## Package Management
+
+In CentOS Linux, packages can be installed in these ways:
+
+1. **dnf** - Package manager (handles dependencies)
+2. **rpm** - RPM Package Manager (manual dependency management)
+3. **Source Code Based Installation** - [Reference](https://www.makeuseof.com/compile-install-software-from-source-linux/)
+
+### dnf Usage Examples
+
+```
+# dnf install packageName -y              # Install package
+# dnf remove packageName                  # Delete package
+# dnf update packageName                  # Update package
+# dnf list installed                      # Show installed packages
+# dnf list available                      # Show available packages
+# sudo dnf list all                       # Show all packages
+# dnf update wget -y                      # Update specific package
+# dnf update -y                           # Update all packages
+# dnf update --security                   # Update only security packages
+# dnf update releasever=9 --security      # Update security packages for specific release
+# dnf update releasever=9 --security --exclude=java*  # Exclude certain packages
+# rpm -qa | grep packageName              # Check if package is installed
+# dnf update `cat package.txt`            # Update packages from file
+# dnf info history                        # Check package installation status
+# dnf history                             # List all dnf commands executed
+```
+
+### rpm Usage Examples
+
+```
+# rpm -i packageName.rpm       # Install package
+# rpm -U packageName.rpm       # Upgrade package
+# rpm -e packageName.rpm       # Delete package
+# rpm -q packageName.rpm       # Query package
+```
+
+### Repository Configuration
+
+How does dnf know where to download packages? It refers to repos in `/etc/yum.repos.d/*.repo` files.
+
+Example:
+
+```
 $ sudo dnf list | grep jenkins -y
-
-Above command will fail as it cannot find jenkins as it's not aware of the path. Let's download a repo file and check it.
-
-Checks the list of repos in the system
-
-ls /etc/yum.repos.d
-
-Download Jenkins repo
-
-`curl https://pkg.jenkins.io/redhat-stable/jenkins.repo -o /etc/yum.repos.d/jenkins.repo`
-
-Check list of repos now.
-
-`ls /etc/yum.repos.d`
-
-Now after importing those new repo files you would be able to install Jenkins software
-
-`sudo dnf list | grep jenkins -y`
-
-We can also install a package using the URL directly.
-
-`sudo dnf install https://pkg.jenkins.io/redhat-stable/jenkins-2.190.2-1.1.noarch.rpm -y`
-
-### Service Management  
-
-Systemctl is the command to start,stop, restart , enable the service in centos 7.
-
-Examples of `systemctl` usage :
-
-```
-    # systemctl start serviceName
-    # systemctl stop service
-    # systemctl restart service
-    # systemctl enable service
 ```
 
-### Network Management  
+This command will fail if jenkins isn't available. Let's download a repo file:
 
 ```
-    # curl ifconfig.co   [ shows you the public ip address of the server ]
-    # ip -a              [ shows you the private ip address of the server ] 
-    # netstat            [ shows the network statistics ]
-    # netstat -ln        [ shows the actual core information]
-    # netstat -tulpn     [ shows you the list of listening ports and the associated process running on it]
+# Check repos in the system
+$ ls /etc/yum.repos.d
 
-```
-### Filters:
-See the complete content inside the file 
+# Download Jenkins repo
+$ curl https://pkg.jenkins.io/redhat-stable/jenkins.repo -o /etc/yum.repos.d/jenkins.repo
 
-```
-   $ cp /etc/passwd .
-   $ cat passwd
-   $ cat -n passwd 
-   $ tac passwd 
+# Check repos now
+$ ls /etc/yum.repos.d
 
-`head`  : This prints the top 10 lines by default of the file
-`tail`  : This prints the last/bottom 10 lines by default of the file
-
-    --> Print from ending of the file 
-        $ tail passwd 
-            It prints last 10 lines
-
-        $ tail -3 passwd 
-            It prints last 3 lines 
+# Now install Jenkins
+$ sudo dnf list | grep jenkins -y
 ```
 
-# cut sed awk : Advanced Filtering Tools on linux
-```
-    -> Search a word and print those lines 
-        Syntax: grep word file 
-        $ grep ec2-user passwd 
-
-    -> Column based filter 
-        Syntax: cut -d delimeter -f number file 
-        $ cut -d : -f 1 passwd 
-        $ cut -d : -f 1,5 passwd
-        $ cut -d : -f 1-5 passwd
-```
-
-### EDITORS: 
-
-There are a lot of fancy editors in Linux --> vi ,vim , nano are few famours editors to edit the file.
-They are just notepad,
+You can also install a package directly from a URL:
 
 ```
-    vim editor is not available by default in centos 7 and we need to install it, To install vim editor type the following command.
-      sudo yum install vim -y
-      
-      Example Usage: $ vim filename.txt
-      
+$ sudo dnf install https://pkg.jenkins.io/redhat-stable/jenkins-2.190.2-1.1.noarch.rpm -y
 ```
 
-Editor vi/vim works in 3 modes :
+## Service Management
+
+`systemctl` is the command to start, stop, restart, and enable services in CentOS.
+
+### systemctl Usage Examples
 
 ```
- 1) ESC Mode 
- 2) COLON Mode 
- 3) INSERT Mode 
- 
- * vim filename  --> To enter smething, yiu've to be in INSERT Mode --> pres i 
+# systemctl start serviceName
+# systemctl stop serviceName
+# systemctl restart serviceName
+# systemctl enable serviceName
+```
 
- After entering the data , if you want to save :
- 
-First clock ESC --> COLON --> wq!
-
-wq! stands for Write and Quit which means SAVE
-
-w --> Write
-q --> Quit
-! --> End of the Expression.
-
-Using the forward slash / we can search the content.
-
+## Network Management
 
 ```
-### VIM Search and replace examples
+# curl ifconfig.co            # Show public IP address
+# ip -a                       # Show private IP address
+# netstat                     # Show network statistics
+# netstat -ln                 # Show core network information
+# netstat -tulpn              # Show listening ports and associated processes
+```
+
+## Filters
+
+### See Complete File Content
 
 ```
-%s/word1/word2/ : % s is going to search for the first occurrence in each and every line and replaces word1 with word2.
-%s/word1/word2/g : % s is going to search for the all occurrence in each and every line and replaces word1 with word2.
-s/word1/word2/ searches the word1 's first occurrence on the line where your cussor is placed 
-s/word1/word2/g searches the word1 's first occurrence on the line where your cussor is placed 
+$ cp /etc/passwd .
+$ cat passwd
+$ cat -n passwd
+$ tac passwd
+```
 
+Where:
+- `head` - Prints top 10 lines by default
+- `tail` - Prints last 10 lines by default
+
+#### Print from End of File
+
+```
+$ tail passwd              # Print last 10 lines
+$ tail -3 passwd           # Print last 3 lines
+```
+
+## cut, sed, awk: Advanced Filtering Tools on Linux
+
+```
+# Search and print lines containing a word
+Syntax: grep word file
+  $ grep ec2-user passwd
+
+# Column-based filtering
+Syntax: cut -d <delimiter> -f <number> <file>
+  $ cut -d : -f 1 passwd
+  $ cut -d : -f 1,5 passwd
+  $ cut -d : -f 1-5 passwd
+```
+
+## Editors
+
+There are many fancy editors in Linux: vi, vim, nano are few famous editors to edit files. They are essentially notepads.
+
+```
+vim editor is not available by default in CentOS 7 and needs to be installed:
+  $ sudo yum install vim -y
+
+Usage example:
+  $ vim filename.txt
+```
+
+### vim Modes
+
+```
+1. ESC Mode
+2. COLON Mode
+3. INSERT Mode
+
+To edit a file:
+  $ vim filename
+
+To enter content:
+  - Press i to enter INSERT Mode
+  - Type your content
+  - Press ESC to return to ESC Mode
+  - Type :wq! to save and exit
+
+Legend:
+  w = Write
+  q = Quit
+  ! = End of expression
+
+Search content using forward slash /:
+  Use the forward slash / to search within the editor.
+```
+
+### VIM Search and Replace Examples
+
+```
+%s/word1/word2/     - Replace first occurrence on each line
+%s/word1/word2/g    - Replace all occurrences on each line (global)
+s/word1/word2/      - Replace first occurrence on current line
+s/word1/word2/g     - Replace all occurrences on current line
 ```
